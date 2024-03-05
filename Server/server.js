@@ -20,6 +20,7 @@ app.use('/api/items', itemRoutes)
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log('Connected to db')
+        
         // listen for requests
         app.listen(process.env.PORT, () => {
             console.log('Server listening on port', process.env.PORT)

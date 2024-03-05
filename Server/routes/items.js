@@ -1,4 +1,5 @@
 const express = require('express')
+const Item = require('../models/itemModel')
 
 const router = express.Router()
 
@@ -13,8 +14,15 @@ router.get('/:id', (req, res) => {
 })
 
 // POST a new item
-router.post('/', (req, res) => {
-    res.json({mssg: 'POST a new item'})
+router.post('/', async (req, res) => {
+    const {name, checked = false} = req.body
+
+    try {
+        const item = await Item.create({name, checked})
+        res.status(200).json(item)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
 })
 
 // DELETE an item
