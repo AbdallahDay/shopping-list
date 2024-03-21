@@ -9,7 +9,7 @@ const itemSchema = new Schema({
     },
     checked: {
         type: Boolean,
-        required: true
+        default: false
     }
 }, { timestamps: true })
 

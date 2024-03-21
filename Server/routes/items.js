@@ -15,7 +15,7 @@ router.get('/:id', (req, res) => {
 
 // POST a new item
 router.post('/', async (req, res) => {
-    const {name, checked = false} = req.body
+    const {name, checked} = req.body
 
     try {
         const item = await Item.create({name, checked})
